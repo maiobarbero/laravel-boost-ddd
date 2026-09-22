@@ -64,7 +64,7 @@
             "vendor/bin/pest --type-coverage --min=100"
         ],
         "test:unit": [
-            "vendor/bin/pest --parallel"
+            "vendor/bin/pest"
         ],
         "test": [
             "@analyse",
