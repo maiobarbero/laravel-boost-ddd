@@ -1,0 +1,42 @@
+{
+    "name": "maiobarbero/laravel-boost-ddd",
+    "description": "Laravel Boost rules, skills, and architecture tests for pragmatic, Laravel-native Domain-Driven Design.",
+    "keywords": [
+        "laravel",
+        "laravel-boost",
+        "ddd",
+        "domain-driven-design",
+        "architecture",
+        "ai",
+        "pest"
+    ],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Matteo Barbero",
+            "email": "maiowebdesign@gmail.com"
+        }
+    ],
+    "require": {
+        "php": "^8.3",
+        "illuminate/support": "^13.0",
+        "laravel/boost": "^2.9",
+        "pestphp/pest": "^4.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "MaioBarbero\\LaravelBoostDdd\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "MaioBarbero\\LaravelBoostDdd\\LaravelBoostDddServiceProvider"
+            ]
+        }
+    },
+    "support": {
+        "issues": "https://github.com/maiobarbero/laravel-boost-ddd/issues",
+        "source": "https://github.com/maiobarbero/laravel-boost-ddd"
+    }
+}
