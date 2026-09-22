@@ -22,8 +22,10 @@
     "require": {
         "php": "^8.3",
         "illuminate/support": "^13.0",
-        "laravel/boost": "^2.9",
-        "pestphp/pest": "^4.1 | ^5.0"
+        "laravel/boost": "^2.9"
+    },
+    "suggest": {
+        "pestphp/pest": "Required to run the published DDD architecture tests."
     },
     "autoload": {
         "psr-4": {
