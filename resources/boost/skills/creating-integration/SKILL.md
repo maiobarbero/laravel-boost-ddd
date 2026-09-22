@@ -1,22 +1,41 @@
 ---
 name: creating-integration
-description: Add an adapter for an external API or third-party system.
+description: Add, change, or debug external API integrations, vendor SDK adapters, and bridges to legacy business workflows. Use when an Action or domain service needs an outer technical dependency.
 ---
 
-# Creating an External Integration
+# External and legacy integrations
 
-Place third-party technical integrations under:
+Put concrete external adapters in `App\Infrastructure\Integrations`, grouped by provider when useful. Legacy workflow bridges may live in `App\Infrastructure\Legacy`. Keep HTTP clients, SDK objects, transport failures, and provider-specific payloads at this boundary; translate them into consumer concepts.
 
-App\Infrastructure\Integrations
+## Connect the consumer
 
-Group integrations by provider or external system when useful.
+A consumer in Domain or Application cannot depend on a concrete Infrastructure class. This boundary is a concrete reason for a contract:
 
-Infrastructure classes may depend on vendor SDKs and framework-specific clients.
+- Application need: `App\Application\<Capability>\Contracts`.
+- Domain need: `App\Domain\<Capability>\Contracts`.
+- Implementation: Infrastructure.
+- Binding: a standard Laravel service provider.
 
-Keep external API concepts from leaking into the Domain.
+```php
+// App\Application\Orders\Contracts\PaymentGateway
+interface PaymentGateway
+{
+    public function refund(string $paymentReference, string $idempotencyKey): void;
+}
 
-Translate external responses into application or domain concepts at the integration boundary.
+// In a service provider's register() method:
+$this->app->bind(
+    \App\Application\Orders\Contracts\PaymentGateway::class,
+    \App\Infrastructure\Integrations\Payments\ProviderPaymentGateway::class,
+);
+```
 
-Introduce an interface only when dependency inversion, substitution, or testing provides a concrete benefit.
+After `OrderCancelled` commits, a queued listener can invoke a refund Action that receives `PaymentGateway`. The adapter implements that interface and translates the provider response. Derive a stable idempotency key for a refund operation and use the provider's supported mechanism or an application deduplication strategy.
 
-Do not create an interface automatically for every integration.
+Do not inject SDK types into the contract or resolve concrete adapters from Actions through `app()`, strings, or custom facades. Do not create an interface for every helper inside Infrastructure.
+
+Keep external calls outside database transactions where possible. A local rollback cannot reverse a remote refund; design retries and failure handling for the actual use case rather than treating the database transaction as distributed atomicity.
+
+For migrated code using legacy business workflows, the same contract/adapter pattern applies. Direct Eloquent persistence is still allowed; it must not become a shortcut into legacy workflow orchestration.
+
+Use events by default for asynchronous reactions. A scheduling contract is warranted only for a real infrastructure capability, not merely because a Job exists.

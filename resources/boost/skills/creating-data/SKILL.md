@@ -1,27 +1,26 @@
 ---
 name: creating-data
-description: Create an Application Data object used to pass structured input into an Action.
+description: Create or change structured input for application use cases, including extracting HTTP request data for Actions invoked from controllers, jobs, or commands. Avoid DTOs for trivial scalar input.
 ---
 
-# Creating Application Data
+# Application input data
 
-Use a Data object when an Action needs structured input that should not depend on HTTP.
+Use `App\Application\<Capability>\Data` and a `Data` suffix only when structured input improves the use case. Prefer immutable PHP objects; reuse an existing compatible Data library without adding a new dependency automatically.
 
-Place it under:
+Transport validation and normalization belong in FormRequests or other entry points. Data objects describe application input; business invariants remain in Domain and must also hold for calls from jobs or commands.
 
-App\Application\<Capability>\Data
+```php
+namespace App\Application\Orders\Data;
 
-Use the `Data` suffix.
+final readonly class CancelOrderData
+{
+    public function __construct(
+        public int $orderId,
+        public string $reason,
+    ) {}
+}
+```
 
-Example:
+This object is warranted if cancellation accepts a reason as well as an ID. If the use case only takes an order ID, pass the scalar directly. Keep the actor explicit and separate when that makes authorization clearer.
 
-PlaceOrderData
-RegisterCustomerData
-
-Data objects represent application input, not Domain concepts.
-
-Do not pass FormRequest instances into Actions.
-
-Prefer immutable Data objects.
-
-Do not create a Data object for trivial scalar input unless it improves clarity.
+Map validated request values at the entry point. Do not accept FormRequests in Actions or add `fromRequest()` dependencies to Data classes. A typed Data object does not replace domain validation. Do not label a domain concept such as Money as application input merely because it carries data.
