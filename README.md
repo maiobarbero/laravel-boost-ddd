@@ -1,9 +1,10 @@
 # Laravel Boost DDD
 
 <p align="center">
-  <a href="https://packagist.org/packages/maiobarbero/laravel-boost-ddd"><img src="https://img.shields.io/packagist/v/maiobarbero/laravel-boost-ddd?style=flat-square" alt="Latest Version"></a>
-  <a href="https://packagist.org/packages/maiobarbero/laravel-boost-ddd"><img src="https://img.shields.io/packagist/php-v/maiobarbero/laravel-boost-ddd?style=flat-square" alt="PHP Version"></a>
-  <img src="https://img.shields.io/badge/Laravel-13.x-FF2D20?style=flat-square&logo=laravel" alt="Laravel 13">
+  <a href="https://packagist.org/packages/maiobarbero/laravel-boost-ddd"><img src="https://img.shields.io/packagist/v/maiobarbero/laravel-boost-ddd?style=flat" alt="Latest Version"></a>
+  <a href="https://packagist.org/packages/maiobarbero/laravel-boost-ddd"><img src="https://badge.laravel.cloud/php-badge/maiobarbero/laravel-boost-ddd?style=flat" alt="PHP Compatibility"></a>
+  <a href="https://packagist.org/packages/maiobarbero/laravel-boost-ddd"><img src="https://badge.laravel.cloud/badge/maiobarbero/laravel-boost-ddd?style=flat" alt="Laravel 13"></a>
+  <a href="https://github.com/laravel/boost"><img src="https://badge.laravel.cloud/boost-badge.svg?style=flat" alt="Laravel Boost"></a>
 </p>
 
 Laravel Boost guidelines, agent skills, and publishable Pest architecture tests for pragmatic, Laravel-native Domain-Driven Design.
@@ -128,4 +129,4 @@ Skills are selected by the agent for relevant tasks; they are guidance, not a gu
 
 ## License
 
-[MIT](LICENSE).
+[MIT](LICENSE)
