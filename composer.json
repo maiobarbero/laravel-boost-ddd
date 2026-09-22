@@ -1,4 +1,5 @@
 {
+    "$schema": "https://getcomposer.org/schema.json",
     "name": "maiobarbero/laravel-boost-ddd",
     "description": "Laravel Boost rules, skills, and architecture tests for pragmatic, Laravel-native Domain-Driven Design.",
     "keywords": [
@@ -12,17 +13,29 @@
         "php",
         "clean-architecture"
     ],
+    "homepage":"https://github.com/maiobarbero/laravel-boost-ddd",
     "license": "MIT",
     "authors": [
         {
             "name": "Matteo Barbero",
-            "email": "maiowebdesign@gmail.com"
+            "email": "matteo.barbero.m@gmail.com",
+            "role": "Developer"
         }
     ],
     "require": {
         "php": "^8.3",
-        "illuminate/support": "^13.0",
+        "illuminate/support": "^12.0|^13.0",
         "laravel/boost": "^2.9"
+    },
+    "require-dev": {
+        "larastan/larastan": "^3.9",
+        "laravel/pint": "^1.29",
+        "laravel/pao": "^1.0",
+        "orchestra/testbench": "^10.0||^11.0",
+        "pestphp/pest": "^4.6||^5.0",
+        "pestphp/pest-plugin-laravel": "^4.1||^5.0",
+        "pestphp/pest-plugin-type-coverage": "^4.0||^5.0",
+        "phpstan/extension-installer": "^1.4"
     },
     "suggest": {
         "pestphp/pest": "Required to run the published DDD architecture tests."
@@ -32,6 +45,34 @@
             "MaioBarbero\\LaravelBoostDdd\\": "src/"
         }
     },
+    "autoload-dev": {
+        "psr-4": {
+            "MaioBarbero\\LaravelBoostDdd\\Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "lint": [
+            "vendor/bin/pint --parallel"
+        ],
+        "lint:check": [
+            "vendor/bin/pint --parallel --test"
+        ],
+        "analyse": [
+            "vendor/bin/phpstan analyse"
+        ],
+        "test:types": [
+            "vendor/bin/pest --type-coverage --min=100"
+        ],
+        "test:unit": [
+            "vendor/bin/pest --parallel"
+        ],
+        "test": [
+            "@analyse",
+            "@lint:check",
+            "@test:types",
+            "@test:unit"
+        ]
+    },
     "extra": {
         "laravel": {
             "providers": [
@@ -39,6 +80,15 @@
             ]
         }
     },
+    "config": {
+        "sort-packages": true,
+        "allow-plugins": {
+            "pestphp/pest-plugin": true,
+            "phpstan/extension-installer": true
+        }
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true,
     "support": {
         "issues": "https://github.com/maiobarbero/laravel-boost-ddd/issues",
         "source": "https://github.com/maiobarbero/laravel-boost-ddd"
