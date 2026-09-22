@@ -1,10 +1,9 @@
 # Laravel Boost DDD
 
 <p align="center">
-    <a href="https://packagist.org/packages/maiobarbero/laravel-boost-ddd"><img src="https://img.shields.io/packagist/v/maiobarbero/laravel-boost-ddd.svg?style=flat-square" alt="Packagist"></a>
-    <a href="https://packagist.org/packages/maiobarbero/laravel-boost-ddd"><img src="https://img.shields.io/packagist/php-v/maiobarbero/laravel-boost-ddd.svg?style=flat-square" alt="PHP from Packagist"></a>
-    <a href="https://packagist.org/packages/maiobarbero/laravel-boost-ddd"><img src="https://badge.laravel.cloud/badge/maiobarbero/laravel-boost-ddd?style=flat" alt="Laravel versions"></a>
-    <!-- <a href="https://packagist.org/packages/maiobarbero/laravel-boost-ddd"><img src="https://img.shields.io/packagist/dt/maiobarbero/laravel-boost-ddd.svg?style=flat-square" alt="Total Downloads"></a> -->
+  <a href="https://packagist.org/packages/maiobarbero/laravel-boost-ddd"><img src="https://img.shields.io/packagist/v/maiobarbero/laravel-boost-ddd?style=flat-square" alt="Latest Version"></a>
+  <a href="https://packagist.org/packages/maiobarbero/laravel-boost-ddd"><img src="https://img.shields.io/packagist/php-v/maiobarbero/laravel-boost-ddd?style=flat-square" alt="PHP Version"></a>
+  <img src="https://img.shields.io/badge/Laravel-13.x-FF2D20?style=flat-square&logo=laravel" alt="Laravel 13">
 </p>
 
 Laravel Boost guidelines, agent skills, and publishable Pest architecture tests for pragmatic, Laravel-native Domain-Driven Design.
@@ -24,14 +23,14 @@ Installing this package expresses an intent to adopt DDD. Its guidance applies t
 
 ## Responsibilities
 
-| Area | Responsibility |
-| --- | --- |
-| `App\Domain\<Capability>` | Business behavior, invariants, value objects, domain exceptions, and business facts. |
+| Area                                   | Responsibility                                                                                                 |
+| -------------------------------------- | -------------------------------------------------------------------------------------------------------------- |
+| `App\Domain\<Capability>`              | Business behavior, invariants, value objects, domain exceptions, and business facts.                           |
 | `App\Application\<Capability>\Actions` | Use-case authorization, orchestration, persistence, transaction coordination, and event dispatch coordination. |
-| `App\Application\<Capability>\Data` | Meaningful structured input, independent of HTTP; unnecessary for trivial scalar input. |
-| Consumer's `Contracts` directory | A Domain or Application interface for an actual outer dependency. |
-| `App\Infrastructure` | External integrations, specialized persistence, and legacy workflow adapters. |
-| Laravel entry points | Authentication, transport validation, invoking use cases, and translating output/errors. |
+| `App\Application\<Capability>\Data`    | Meaningful structured input, independent of HTTP; unnecessary for trivial scalar input.                        |
+| Consumer's `Contracts` directory       | A Domain or Application interface for an actual outer dependency.                                              |
+| `App\Infrastructure`                   | External integrations, specialized persistence, and legacy workflow adapters.                                  |
+| Laravel entry points                   | Authentication, transport validation, invoking use cases, and translating output/errors.                       |
 
 An order's `cancel()` method enforces its rules and changes state; `CancelOrder::handle()` authorizes and calls `save()`. An Action owns a database transaction when coordinated writes must succeed together. Domain may produce or record events; Application coordinates dispatch so external effects happen after commit. An event collection mechanism is not mandatory.
 
@@ -92,8 +91,8 @@ Use these instructions when a user asks you to install this package in a Laravel
 
    ```json
    {
-       "agents": ["codex"],
-       "packages": ["maiobarbero/laravel-boost-ddd"]
+     "agents": ["codex"],
+     "packages": ["maiobarbero/laravel-boost-ddd"]
    }
    ```
 
@@ -111,19 +110,19 @@ Use these instructions when a user asks you to install this package in a Laravel
 
 ## Included skills
 
-| Skill | Purpose |
-| --- | --- |
-| `creating-action` | Implement and refactor use cases, authorization, persistence, and orchestration. |
-| `creating-data` | Introduce structured application input when useful. |
-| `creating-domain-model` | Keep business transitions and invariants on Eloquent entities. |
-| `creating-value-object` | Model meaningful immutable business values. |
-| `creating-domain-service` | Place cohesive rules that have no natural entity/value owner. |
-| `creating-domain-event` | Express business facts and coordinate safe reaction timing. |
-| `creating-integration` | Connect consumer-owned contracts to external or legacy adapters. |
-| `introducing-repository` | Introduce persistence abstractions only for an actual need. |
-| `using-laravel-entry-points` | Keep delivery code thin while retaining Laravel conventions. |
-| `testing-domain` | Verify invariants and state transitions directly. |
-| `testing-action` | Verify use-case outcomes, authorization, rollback, and event timing. |
+| Skill                        | Purpose                                                                          |
+| ---------------------------- | -------------------------------------------------------------------------------- |
+| `creating-action`            | Implement and refactor use cases, authorization, persistence, and orchestration. |
+| `creating-data`              | Introduce structured application input when useful.                              |
+| `creating-domain-model`      | Keep business transitions and invariants on Eloquent entities.                   |
+| `creating-value-object`      | Model meaningful immutable business values.                                      |
+| `creating-domain-service`    | Place cohesive rules that have no natural entity/value owner.                    |
+| `creating-domain-event`      | Express business facts and coordinate safe reaction timing.                      |
+| `creating-integration`       | Connect consumer-owned contracts to external or legacy adapters.                 |
+| `introducing-repository`     | Introduce persistence abstractions only for an actual need.                      |
+| `using-laravel-entry-points` | Keep delivery code thin while retaining Laravel conventions.                     |
+| `testing-domain`             | Verify invariants and state transitions directly.                                |
+| `testing-action`             | Verify use-case outcomes, authorization, rollback, and event timing.             |
 
 Skills are selected by the agent for relevant tasks; they are guidance, not a guarantee of automatic activation. The always-loaded core guidelines establish the shared boundaries.
 
