@@ -1,7 +1,7 @@
 # Laravel Boost DDD
 
 <p align="center">
-  <a href="https://github.com/maiobarbero/laravel-boost-ddd/actions/workflows/tests.yml"><img src="https://github.com/maiobarbero/laravel-boost-ddd/actions/workflows/tests.yml/badge.svg?branch=main"></a>
+  <a href="https://github.com/maiobarbero/laravel-boost-ddd/"><img src="https://github.com/maiobarbero/laravel-boost-ddd/actions/workflows/ci.yml/badge.svg?branch=main"></a>
   <a href="https://packagist.org/packages/maiobarbero/laravel-boost-ddd"><img src="https://img.shields.io/packagist/v/maiobarbero/laravel-boost-ddd?style=flat" alt="Latest Version"></a>
   <a href="https://packagist.org/packages/maiobarbero/laravel-boost-ddd"><img src="https://badge.laravel.cloud/php-badge/maiobarbero/laravel-boost-ddd?style=flat" alt="PHP Compatibility"></a>
   <a href="https://packagist.org/packages/maiobarbero/laravel-boost-ddd"><img src="https://badge.laravel.cloud/badge/maiobarbero/laravel-boost-ddd?style=flat" alt="Laravel 13"></a>
