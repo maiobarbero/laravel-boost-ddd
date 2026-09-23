@@ -19,6 +19,9 @@ jobs:
   tests:
     uses: ./.github/workflows/tests.yml
 
+  type-coverage:
+    uses: ./.github/workflows/type-coverage.yml
+
   phpstan:
     uses: ./.github/workflows/phpstan.yml
 
