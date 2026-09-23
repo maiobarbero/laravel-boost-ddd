@@ -3,7 +3,7 @@
 namespace MaioBarbero\LaravelBoostDdd;
 
 use Illuminate\Support\ServiceProvider;
-use MaioBarbero\LaravelBoostDdd\Console\Commands\InstallLaravelBoostDddCommand;
+use MaioBarbero\LaravelBoostDdd\Console\Commands\InstallCommand;
 
 final class LaravelBoostDddServiceProvider extends ServiceProvider
 {
@@ -15,7 +15,7 @@ final class LaravelBoostDddServiceProvider extends ServiceProvider
             ], 'laravel-boost-ddd');
 
             $this->commands([
-                InstallLaravelBoostDddCommand::class,
+                InstallCommand::class,
             ]);
         }
     }
