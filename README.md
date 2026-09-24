@@ -1,6 +1,7 @@
 ![Laravel Boost DDD, pragmatic Domain-Driven Design for Laravel Boost](art/banner.png)
 
-# Laravel Boost DDD - Pragmatic Domain-Driven Design for Laravel Boost
+# Laravel Boost DDD
+**Pragmatic, Laravel-native Domain-Driven Design for Laravel Boost.**
 
 <p align="center">
   <a href="https://github.com/maiobarbero/laravel-boost-ddd/"><img src="https://github.com/maiobarbero/laravel-boost-ddd/actions/workflows/ci.yml/badge.svg?branch=main"></a>
@@ -10,11 +11,45 @@
   <a href="https://github.com/laravel/boost"><img src="https://badge.laravel.cloud/boost-badge.svg?style=flat" alt="Laravel Boost"></a>
 </p>
 
-Laravel Boost DDD adds guidelines, 11 agent skills, and Pest architecture tests to [Laravel Boost](https://github.com/laravel/boost). It gives coding agents a shared approach to Domain-Driven Design (DDD) in a Laravel application, from deciding where a business rule belongs to testing a use case that writes to the database.
+Laravel Boost DDD teaches your coding agents how to apply Domain-Driven Design without fighting Laravel.
+
+It provides Laravel Boost with opinionated guidelines, 11 task-specific agent skills, and Pest architecture tests so that feature work consistently follows the same architectural boundaries.
+
+The goal is not to turn every Laravel application into enterprise architecture. The goal is to give business complexity a clear place to live.
 
 The approach keeps Eloquent, policies, events, queues, and Laravel's usual entry points. Business behavior belongs in Domain, use cases belong in Application, and external integrations belong in Infrastructure. Repositories, Data objects, and services are introduced only when the work gives them a purpose.
 
 Adoption happens as you work on the application. New capabilities follow the DDD structure; **existing code stays where it is until a migration is part of the task**. Installing the package gives the agent that direction for feature work, bug fixes, and refactoring. It does not move application code or authorize a wider rewrite.
+
+## What does it change?
+
+Without architectural guidance, a coding agent can easily put authorisation, business rules, database writes, external APIs, and event dispatching into the same controller or service.
+
+Laravel Boost DDD gives the agent a shared set of decisions for where that code belongs.
+
+For example, a request to:
+
+> Add the ability for a customer to cancel an order.
+
+might result in:
+```
+app/
+├── Application/
+│   └── Orders/
+│       └── Actions/
+│           └── CancelOrder.php
+│
+├── Domain/
+│   └── Orders/
+│       ├── Models/
+│       │   └── Order.php
+│       └── Events/
+│           └── OrderCancelled.php
+│
+└── Http/
+    └── Controllers/
+        └── CancelOrderController.php
+```
 
 ## Installation
 
