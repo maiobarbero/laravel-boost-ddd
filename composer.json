@@ -82,12 +82,14 @@
     },
     "config": {
         "sort-packages": true,
+        "preferred-install": "dist",
+        "process-timeout": 0,
         "allow-plugins": {
             "pestphp/pest-plugin": true,
             "phpstan/extension-installer": true
         }
     },
-    "minimum-stability": "stable",
+    "minimum-stability": "dev",
     "prefer-stable": true,
     "support": {
         "issues": "https://github.com/maiobarbero/laravel-boost-ddd/issues",
