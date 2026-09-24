@@ -1,5 +1,11 @@
 # Release Notes
 
+## [v1.0.1](https://github.com/maiobarbero/laravel-boost-ddd/compare/v1.0.0...v1.0.1) - 2026-09-24
+
+### Highlights
+
+* Update package installation instruction to require `--dev`
+
 ## [v1.0.0](https://github.com/maiobarbero/laravel-boost-ddd/compare/v0.1.0...v1.0.0) - 2026-09-23
 
 ### Laravel Boost DDD v1.0.0
@@ -26,6 +32,7 @@ Laravel Boost DDD teaches AI coding agents to structure Laravel applications usi
 ```bash
 composer require maiobarbero/laravel-boost-ddd --dev
 php artisan boost-ddd:install
+
 
 ```
 #### Philosophy
