@@ -11,7 +11,8 @@
         "ai",
         "pest",
         "php",
-        "clean-architecture"
+        "clean-architecture",
+        "dev"
     ],
     "homepage":"https://github.com/maiobarbero/laravel-boost-ddd",
     "license": "MIT",
